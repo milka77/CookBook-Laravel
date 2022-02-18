@@ -1,0 +1,14 @@
+.recipe {
+
+  &-info {
+    &__left {
+      background-color: $white-lite;
+    }
+  }
+
+  &__footer {
+    border-top: 1px solid #9e9e9ec9;
+    border-bottom: 1px solid #9e9e9ec9;
+
+  }
+}
