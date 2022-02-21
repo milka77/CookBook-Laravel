@@ -39,21 +39,7 @@
 
   @section('extra-script')
   <script>
-    $('.fav').on('click', function() {
-      $(this).toggleClass('fa-regular text-secondary');
-      $(this).toggleClass('fa-solid text-danger');
-    });
-
-    $('.like').on('click', function() {
-      $(this).toggleClass('fa-regular text-secondary');
-      $(this).toggleClass('fa-solid text-primary');
-    });
-
-    $('.dislike').on('click', function() {
-      $(this).toggleClass('fa-regular text-secondary');
-      $(this).toggleClass('fa-solid text-primary');
-    });
-
+    
 
   </script>
   @endsection

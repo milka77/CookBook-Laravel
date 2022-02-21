@@ -33,10 +33,10 @@
                   </div>
                   <div class="mt-2 mb-0 d-flex">
                     <ul class="recipe__social__list mx-auto">
-                      <li><small>0 </small><i class="fa-regular fa-thumbs-up text-secondary recipe__social__icon"></i></li>
-                      <li><small>0 </small><i class="fa-regular fa-thumbs-down text-secondary recipe__social__icon"></i></li>
-                      <li><small>14 </small><i class="fa-regular fa-comment text-secondary recipe__social__icon"></i></li>
-                      <li><i class="fa-regular fa-heart text-secondary recipe__social__icon"></i></li>
+                      <li><small>0 </small><i class="fa-regular fa-thumbs-up text-secondary recipe__social__icon like"></i></li>
+                        <li><small>0 </small><i class="fa-regular fa-thumbs-down text-secondary recipe__social__icon dislike"></i></li>
+                        <li><small>14 </small><i class="fa-regular fa-comment text-secondary recipe__social__icon"></i></li>
+                        <li><i class="fa-regular fa-heart text-secondary recipe__social__icon fav"></i></li>
                     </ul>      
                   </div>
                 </div>
