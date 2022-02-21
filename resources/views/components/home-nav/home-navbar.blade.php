@@ -11,10 +11,10 @@
           <!-- Left Side Of Navbar -->
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Recipies</a>
+              <a class="nav-link active" aria-current="page" href="{{ route('recipe.index')}}">Recipies</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Lorem</a>

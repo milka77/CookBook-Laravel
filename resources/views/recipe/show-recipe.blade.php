@@ -89,11 +89,20 @@
 
   <div class="row recipe__footer">
     
-    <div class="col-6">
-      Created by: {{$recipe->user->first_name}} {{$recipe->user->last_name}}
+    <div class="col-4">
+      <small>Created by: {{$recipe->user->first_name}} {{$recipe->user->last_name}}</small>
     </div>
-    <div class="col-6 text-end">
-      Last Updated: {{$recipe->updated_at}}
+
+    <div class="col-4">
+      <ul class="recipe__social__list">
+        <li><small>0 </small><i class="fa-regular fa-thumbs-up text-secondary recipe__social__icon"></i></li>
+        <li><small>0 </small><i class="fa-regular fa-thumbs-down text-secondary recipe__social__icon"></i></li>
+        <li><small>14 </small><i class="fa-regular fa-comment text-secondary recipe__social__icon"></i></li>
+        <li><i class="fa-regular fa-heart text-secondary recipe__social__icon"></i></li>
+      </ul>      
+    </div>
+    <div class="col-4 text-end">
+      <small>Last Updated: {{$recipe->updated_at}}</small>
     </div>
     
   </div>

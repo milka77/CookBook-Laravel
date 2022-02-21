@@ -1,5 +1,7 @@
 <?php
 namespace App\Http\Controllers;
+
+use Facade\FlareClient\Glows\Recorder;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,10 +20,10 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth'])->group(function(){
     // Recipies Routes
+    Route::get('/recipe', [RecipeController::class, 'index'])->name('recipe.index');
     Route::get('/recipe/new', [RecipeController::class, 'create'])->name('recipe.create');
     Route::post('/recipe', [RecipeController::class, 'store'])->name('recipe.store');
 

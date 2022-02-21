@@ -30,6 +30,13 @@ class RecipeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
+    // The recipe index page
+    public function index(){
+        $recipies = Recipe::all();
+
+        return view('recipe.index-recipe', ['recipies'=>$recipies]);
+    }
+
     // Show the new recipe form
     public function create()
     {

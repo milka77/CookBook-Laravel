@@ -4,6 +4,18 @@
   padding: 20px 40px;
 }
 
+.content {
+  min-height: calc(100vh - 23px - 55px);
+}
+
 .top-divider {
   margin: 0 !important;
+}
+
+.recipe-card {
+  min-height: 415px;
+}
+
+.card-text {
+  min-height: 69px;
 }
