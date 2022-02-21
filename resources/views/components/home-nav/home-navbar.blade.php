@@ -17,7 +17,7 @@
               <a class="nav-link active" aria-current="page" href="{{ route('recipe.index')}}">Recipies</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Lorem</a>
+              <a class="nav-link active" aria-current="page" href="{{ route('recipe.create')}}">New Recipe</a>
             </li>
           </ul>
 
