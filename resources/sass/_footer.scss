@@ -1,0 +1,43 @@
+.footer {
+  padding: 2rem 0;
+
+  &__link {
+    padding-left: 7rem;
+  }
+
+  &__link ul {
+    list-style: none;
+    padding-inline-start: 0;
+  }
+
+  &__link h6 {
+    padding-left: 1.5rem;
+  }
+
+  &__link a {
+    text-decoration: none;
+    color: $text-white;
+    transition: 0.3s;
+  }
+
+  &__link a:hover {
+    color: rgb(10, 227, 10);
+  }
+
+  &__copyright {
+    padding: 1rem 0 0.5rem;
+  }
+  
+  @include breakpoint-down(small) {
+    padding: 2rem 0;
+    text-align: center;
+    
+    &__link {
+      padding-left: 0;
+    }
+    
+    &__link h6 {
+      padding-left: 0;
+    }
+  }
+}

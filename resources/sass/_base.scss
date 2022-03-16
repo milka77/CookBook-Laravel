@@ -19,3 +19,9 @@
 .card-text {
   min-height: 69px;
 }
+
+@include breakpoint-down(small) {
+  .frame {
+    box-shadow: none;
+  }
+}

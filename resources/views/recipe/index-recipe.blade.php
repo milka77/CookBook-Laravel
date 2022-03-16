@@ -10,7 +10,12 @@
               @foreach ($recipies as $recipe)
               <div class="col-sm-12 col-md-4 col-lg-3 mb-3">
                 <div class="card recipe-card" >
-                  <img src="https://i.picsum.photos/id/400/300/200.jpg?hmac=XggVZVWD6dX5cm-sPm1-MUjPZFsIPdj-2CeB8brj4jQ" class="card-img-top" alt="...">
+                  @if (!empty($recipe->file_path))
+                    <img class="card-img-top" src="{{$recipe->file_path}}" alt="">        
+                  @else
+                    <img class="card-img-top" src="https://i.picsum.photos/id/400/300/200.jpg?hmac=7dQ8yzes8nypL9lwIUoEZWNLHd9SgcpCbs8fZ07JT8U" alt="">
+                  @endif
+                  {{-- <img src="https://i.picsum.photos/id/400/300/200.jpg?hmac=XggVZVWD6dX5cm-sPm1-MUjPZFsIPdj-2CeB8brj4jQ" class="card-img-top" alt="..."> --}}
                   <div class="card-body">
                     <h5 class="card-title">{{ $recipe->name }}</h5>
                     <p class="card-text">{{ Str::limit($recipe->info, 100) }}</p>
@@ -30,7 +35,9 @@
                     
               </div>
               @endforeach
-    
+              <div class="d-flex">
+                <div class="mx-auto">{{ $recipies->links() }}  </div>
+              </div>
             </div>
           </div>
       </div>

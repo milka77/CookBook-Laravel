@@ -11308,12 +11308,49 @@ textarea.form-control-lg {
   min-height: 69px;
 }
 
-.recipe-info__left {
-  background-color: rgba(255, 255, 255, 0.5);
+@media (max-width: 39.9375em) {
+  .frame {
+    box-shadow: none;
+  }
+}
+.recipe__heading {
+  border-bottom: 1px solid #9e9e9ec9;
+  padding-left: 1rem;
+}
+.recipe__frame {
+  width: 75%;
+  margin: 2rem auto;
+}
+.recipe-info {
+  padding: 1rem 0;
+}
+.recipe-info__left__list-data {
+  float: right;
+  padding-right: 1rem;
+}
+.recipe-info__left ul {
+  list-style: none;
+}
+.recipe-info__right {
+  padding: 2rem;
+}
+.recipe__ingredients-wrap {
+  padding: 1rem 0;
+}
+.recipe__ingredients-wrap ul {
+  list-style: none;
+}
+.recipe__instructions {
+  padding: 1rem 0;
 }
 .recipe__social__list {
   list-style: none;
   margin: 0;
+  -webkit-padding-start: 0;
+          padding-inline-start: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 .recipe__social__list li {
   display: inline;
@@ -11325,4 +11362,78 @@ textarea.form-control-lg {
 .recipe__footer {
   border-top: 1px solid #9e9e9ec9;
   border-bottom: 1px solid #9e9e9ec9;
+}
+.recipe__footer__updated {
+  text-align: right;
+}
+@media (max-width: 63.9375em) {
+  .recipe__frame {
+    width: 100%;
+  }
+  .recipe__social__list {
+    gap: 0;
+  }
+  .recipe__footer__updated {
+    padding: 0;
+  }
+}
+@media (max-width: 39.9375em) {
+  .recipe__frame {
+    margin-top: 0;
+  }
+  .recipe-info__left ul {
+    -webkit-padding-start: 0;
+            padding-inline-start: 0;
+  }
+  .recipe-info__right {
+    padding: 1rem 0 0 0;
+    border-top: 1px solid #9e9e9ec9;
+  }
+  .recipe__tools, .recipe__preparation {
+    padding-top: 1rem;
+  }
+  .recipe__footer {
+    text-align: center;
+  }
+  .recipe__footer__updated {
+    text-align: center;
+  }
+}
+
+.footer {
+  padding: 2rem 0;
+}
+.footer__link {
+  padding-left: 7rem;
+}
+.footer__link ul {
+  list-style: none;
+  -webkit-padding-start: 0;
+          padding-inline-start: 0;
+}
+.footer__link h6, .footer__link .h6 {
+  padding-left: 1.5rem;
+}
+.footer__link a {
+  text-decoration: none;
+  color: #fafafa;
+  transition: 0.3s;
+}
+.footer__link a:hover {
+  color: #0ae30a;
+}
+.footer__copyright {
+  padding: 1rem 0 0.5rem;
+}
+@media (max-width: 39.9375em) {
+  .footer {
+    padding: 2rem 0;
+    text-align: center;
+  }
+  .footer__link {
+    padding-left: 0;
+  }
+  .footer__link h6, .footer__link .h6 {
+    padding-left: 0;
+  }
 }

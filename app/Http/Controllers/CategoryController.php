@@ -14,11 +14,7 @@ class CategoryController extends Controller
     public function index() {
         $categories = Category::all();
 
-        $context = [
-            'categories' => $categories,
-        ];
-        
-        return view('admin.category.index', $context);
+        return view('admin.category.index', ['categories' => $categories]);
     }
 
     public function create() {
@@ -70,7 +66,7 @@ class CategoryController extends Controller
     public function destroy(Category $category) {
         $category->delete();
 
-        Toastr::success('Category was deleted!', 'System mesage');
+        Toastr::success('Category was deleted!', 'System message');
 
         return redirect(route('cat.index'));
     }

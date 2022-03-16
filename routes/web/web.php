@@ -29,10 +29,22 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('/recipe/{recipe}/show', [RecipeController::class, 'show'])->name('recipe.show');
 
+    Route::get('/user/myrecipies', [RecipeController::class, 'userRecipies'])->name('user.myrecipies');
+
     // Admin Routes
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/admin/allrecipe', [AdminController::class, 'allRecipies'])->name('admin.allrecipies');
 
+    Route::get('/admin/role', [RoleController::class, 'index'])->name('role.index');
+    Route::get('/admin/role/new', [RoleController::class, 'create'])->name('role.create');
+    Route::post('/admin/role', [RoleController::class, 'store'])->name('role.store');
 
+    Route::get('/admin/role/{role}/edit', [RoleController::class, 'edit'])->name('role.edit');
+    Route::patch('/admin/role/{role}/update', [RoleController::class, 'update'])->name('role.update');
+
+    Route::delete('/admin/role/{role}/destroy', [RoleController::class, 'destroy'])->name('role.destroy');
+
+    
     // Categories Routes
     Route::get('/admin/category', [CategoryController::class, 'index'])->name('cat.index');
     Route::get('/admin/category/new', [CategoryController::class, 'create'])->name('cat.create');

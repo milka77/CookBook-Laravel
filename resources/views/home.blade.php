@@ -22,9 +22,10 @@
         <div class="mt-4">
           <div class="row justify-content-center">
             @foreach ($recipies as $recipe)
-            <div class="col-sm-12 col-md-4 col-lg-3 mb-3">
+            <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
               <div class="card recipe-card" >
-                <img src="https://i.picsum.photos/id/400/300/200.jpg?hmac=XggVZVWD6dX5cm-sPm1-MUjPZFsIPdj-2CeB8brj4jQ" class="card-img-top" alt="...">
+                {{-- <img src="https://i.picsum.photos/id/400/300/200.jpg?hmac=XggVZVWD6dX5cm-sPm1-MUjPZFsIPdj-2CeB8brj4jQ" class="card-img-top" alt="..."> --}}
+                <img src="{{ $recipe->file_path }}" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">{{ $recipe->name }}</h5>
                   <p class="card-text">{{ Str::limit($recipe->info, 100) }}</p>

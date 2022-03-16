@@ -32,7 +32,7 @@ class RecipeController extends Controller
 
     // The recipe index page
     public function index(){
-        $recipies = Recipe::all();
+        $recipies = Recipe::paginate(8);
 
         return view('recipe.index-recipe', ['recipies'=>$recipies]);
     }
@@ -124,4 +124,11 @@ class RecipeController extends Controller
     public function show(Recipe $recipe) {
         return view('recipe.show-recipe', ['recipe'=>$recipe]);
     } 
+
+    // Users Admin panel
+    public function userRecipies() {
+        $myRecipies = auth()->user()->recipies()->paginate(10);
+
+        return view('recipe.my-recipe', ['myrecipies'=>$myRecipies]);
+    }
 }
