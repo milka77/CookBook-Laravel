@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Str;
 use App\Models\Recipe;
 
 class User extends Authenticatable
@@ -51,6 +52,22 @@ class User extends Authenticatable
     // Get users full name
     public function getFullNameAttribute() {
         return ucfirst($this->first_name) . ' ' . ucfirst($this->last_name);
+    }
+
+
+    // Relationship with Role Model
+    public function roles() {
+        return $this->belongsToMany(Role::class);
+    }
+    
+    // Checking User roles 
+    public function userHasRole($role_name) {
+        foreach($this->roles as $role) {
+            if(Str::lower($role_name) == Str::lower($role->name)) {
+                return true;
+            }
+            return false;
+        }
     }
 
 }
