@@ -22,19 +22,19 @@ Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->prefix('admin')->group(function(){
    
     // Admin Routes
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-    Route::get('/admin/allrecipe', [AdminController::class, 'allRecipies'])->name('admin.allrecipies');
+    Route::get('/', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/allrecipe', [AdminController::class, 'allRecipies'])->name('admin.allrecipies');
 
-    Route::get('/admin/role', [RoleController::class, 'index'])->name('role.index');
-    Route::get('/admin/role/new', [RoleController::class, 'create'])->name('role.create');
-    Route::post('/admin/role', [RoleController::class, 'store'])->name('role.store');
+    Route::get('/role', [RoleController::class, 'index'])->name('role.index');
+    Route::get('/role/new', [RoleController::class, 'create'])->name('role.create');
+    Route::post('/role', [RoleController::class, 'store'])->name('role.store');
 
-    Route::get('/admin/role/{role}/edit', [RoleController::class, 'edit'])->name('role.edit');
-    Route::patch('/admin/role/{role}/update', [RoleController::class, 'update'])->name('role.update');
+    Route::get('/role/{role}/edit', [RoleController::class, 'edit'])->name('role.edit');
+    Route::patch('/role/{role}/update', [RoleController::class, 'update'])->name('role.update');
 
-    Route::delete('/admin/role/{role}/destroy', [RoleController::class, 'destroy'])->name('role.destroy');
+    Route::delete('/role/{role}/destroy', [RoleController::class, 'destroy'])->name('role.destroy');
 
 });

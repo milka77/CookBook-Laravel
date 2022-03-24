@@ -3,16 +3,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['auth'])->group(function(){
-  
+Route::middleware(['auth'])->prefix('difficulty')->group(function(){
   
     // Difficulties routes
-    Route::get('/difficulty', [DifficultyController::class, 'index'])->name('difficulty.index');
-    Route::get('/difficulty/new', [DifficultyController::class, 'create'])->name('difficulty.create');
-    Route::post('/difficulty', [DifficultyController::class, 'store'])->name('difficulty.store');
+    Route::get('/', [DifficultyController::class, 'index'])->name('difficulty.index');
+    Route::get('/new', [DifficultyController::class, 'create'])->name('difficulty.create');
+    Route::post('/', [DifficultyController::class, 'store'])->name('difficulty.store');
 
-    Route::get('/difficulty/{difficulty}/edit', [DifficultyController::class, 'edit'])->name('difficulty.edit');
-    Route::patch('/difficulty/{difficulty}/update', [DifficultyController::class, 'update'])->name('difficulty.update');
+    Route::get('/{difficulty}/edit', [DifficultyController::class, 'edit'])->name('difficulty.edit');
+    Route::patch('/{difficulty}/update', [DifficultyController::class, 'update'])->name('difficulty.update');
 
-    Route::delete('/difficulty/{difficulty}/destroy', [DifficultyController::class, 'destroy'])->name('difficulty.destroy');
+    Route::delete('/{difficulty}/destroy', [DifficultyController::class, 'destroy'])->name('difficulty.destroy');
 });
