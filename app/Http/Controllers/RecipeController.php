@@ -54,7 +54,6 @@ class RecipeController extends Controller
     // Store the new recipe in the DB
     public function store()
     {
-
         // $this->authorize('create', Recipe::class);
 
         request()->validate([
@@ -67,7 +66,7 @@ class RecipeController extends Controller
             'difficulty' => 'required',
             'ingredients' => 'required',
             'cook_instructions' => 'required',
-
+            'file_path' => 'file',
         ]);
         
         // Checking and removing the last character if the input ends with a comma
@@ -94,8 +93,7 @@ class RecipeController extends Controller
             $tools = substr_replace($tools ,"",-1);
         }
 
-
-
+        
         $data = [
             'name' => $_REQUEST['name'],
             'info' => $_REQUEST['info'],
@@ -109,8 +107,12 @@ class RecipeController extends Controller
             'prep_instructions' => $prep_instructions,
             'cook_instructions' => $cook_instructions,
             'tools' => $tools,
-            // 'file_path' => $_REQUEST['file_path'],
         ];
+        
+        // Checking if recipe image exist
+        if(request('file_path')){
+            $data['file_path'] = request('file_path')->store('images');
+        }
         // dd($data);
 
         auth()->user()->recipies()->create($data);
@@ -120,7 +122,7 @@ class RecipeController extends Controller
         return redirect()->route('recipe.create');
     }
 
-    // Show a sinle recipe
+    // Show a single recipe
     public function show(Recipe $recipe) {
         return view('recipe.show-recipe', ['recipe'=>$recipe]);
     } 

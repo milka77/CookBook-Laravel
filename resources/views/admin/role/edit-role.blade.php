@@ -11,12 +11,12 @@
           <!-- Name input field -->
           <div class="mb-2">
             <label class="form-label" for="name">Role name: <i class="fa-light fa-asterisk text-danger"></i></label>
-            <input class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}" type="text" name="name" value="{{$role->name}}">
+            <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" value="{{ $role->name }}">
             
             <!-- Displaying the error if exists -->  
             <div>
               @error('name')
-              <span class="text-danger">{{$message}}</span>
+              <span class="text-danger">{{ $message }}</span>
               @enderror
             </div>
             <!-- ./Displaying the error if exists -->  

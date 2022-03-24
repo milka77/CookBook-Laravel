@@ -38,4 +38,12 @@ class Recipe extends Model
     public function difficulty() {
         return $this->belongsTo(Difficulty::class);
     }
+
+    public function getFilePathAttribute($value) {
+        if(strpos($value, 'https://') !== FALSE || strpos($value, 'http://') !== FALSE) {
+            return $value;
+        }
+
+        return asset('storage/' . $value);
+    }
 }
