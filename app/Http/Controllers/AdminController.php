@@ -12,7 +12,14 @@ class AdminController extends Controller
     //
 
     public function index() {
-        return view('admin.index');
+        $users = User::all();
+        $recipies = Recipe::all();
+        $context = [
+            'users'=>$users,
+            'recipies' => $recipies
+        ];
+
+        return view('admin.index', $context);
     }
 
     public function allRecipies() {

@@ -12,13 +12,19 @@
             <thead>
               <tr>
                 <th>Name</th>
-                <th>NUMBER</tr>
-              </tr>
-              <tr>
-                <td>All users</td>
-                <td class="text-right">777</td>
+                <th class="text-right">Data</tr>
               </tr>
             </thead>
+            <tbody>
+              <tr>
+                <td>All users</td>
+                <td class="text-right"><?= count($users); ?></td>
+              </tr>
+              <tr>
+                <td>Newest user</td>
+                <td class="text-right">{{ $users->last()->full_name }}</td>
+              </tr>
+            </tbody>
           </table>
         </div>
 
@@ -29,13 +35,19 @@
             <thead>
               <tr>
                 <th>Name</th>
-                <th>NUMBER</tr>
-                </tr>
-                <tr>
-                  <td>All recipies</td>
-                  <td class="text-right">777</td>
+                <th class="text-right">Data</tr>
                 </tr>
               </thead>
+              <tbody>
+                <tr>
+                  <td>All recipies</td>
+                  <td class="text-right"><?= count($recipies); ?></td>
+                </tr>
+                <tr>
+                  <td>Latest recipe</td>
+                  <td class="text-right"><a href="{{ route('recipe.show', $recipies->last()->id )}}">{{ $recipies->last()->name }}</a></td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
