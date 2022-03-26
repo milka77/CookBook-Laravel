@@ -23,9 +23,9 @@
             <tbody>
               @foreach ($recipies as $recipe)
                 <tr class="border-bottom">
-                  <td>{{$recipe->id}}</td>
-                  <td>{{$recipe->name}}</td>
-                  <td>{{$recipe->user->full_name}}</td>
+                  <td>{{ $recipe->id }}</td>
+                  <td><a href="{{ route('recipe.show', $recipe->id) }}">{{ $recipe->name }}</a></td>
+                  <td>{{ $recipe->user->full_name }}</td>
                   <td><a class="btn btn-success" href="#">Update</a></td>
                   <td>
                     <form action="#" method="POST">
@@ -43,8 +43,8 @@
           
           <div class="mb-3 d-flex">
             <div class="mx-auto">
-              <a href="{{route('recipe.create')}}" class="btn btn-success">Add recipe</a>
-              <a href="{{route('admin.index')}}" class="btn btn-outline-danger">Back</a>
+              <a href="{{ route('recipe.create') }}" class="btn btn-success">Add recipe</a>
+              <a href="{{ route('admin.index') }}" class="btn btn-outline-danger">Back</a>
             </div>
           </div>
         </div>       
