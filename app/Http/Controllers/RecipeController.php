@@ -119,7 +119,7 @@ class RecipeController extends Controller
 
         Toastr::success('Recipe added successfuly!', 'System message');
 
-        return redirect()->route('recipe.create');
+        return redirect()->route('recipe.index');
     }
 
     // Show a single recipe
@@ -132,5 +132,86 @@ class RecipeController extends Controller
         $myRecipies = auth()->user()->recipies()->paginate(10);
 
         return view('recipe.my-recipe', ['myrecipies'=>$myRecipies]);
+    }
+
+    // Recipe edit function
+    public function edit(Recipe $recipe) {
+        $categories = Category::all();
+        $difficulties = Difficulty::all();
+
+        $context = [
+            'categories' => $categories,
+            'difficulties' => $difficulties,
+            'recipe' => $recipe,
+        ];
+
+        return view('admin.recipe.edit-recipe', $context);
+    }
+
+    // Recipe update function
+    public function update(Recipe $recipe) {
+        request()->validate([
+            'name' => 'required|min:8|max:255',
+            'info' => 'required|min:8|max:255',
+            'prep_time' => 'required|max:5',
+            'cooking_time' => 'required|max:5',
+            'servings' => 'required|max:5',
+            'category' => 'required',
+            'difficulty' => 'required',
+            'ingredients' => 'required',
+            'cook_instructions' => 'required',
+            'file_path' => 'file',
+        ]);
+
+        // Checking and removing the last character if the input ends with a comma
+        $ingredients = $_REQUEST['ingredients'];
+        if(str_ends_with($ingredients, ',')) {
+            $ingredients = substr_replace($ingredients ,"",-1);
+        }
+
+        // Checking and removing the last character if the input ends with a comma
+        $prep_instructions = $_REQUEST['preparations'];
+        if(str_ends_with($prep_instructions, ',')) {
+            $prep_instructions = substr_replace($prep_instructions ,"",-1);
+        }
+
+        // Checking and removing the last character if the input ends with a comma
+        $cook_instructions = $_REQUEST['cook_instructions'];
+        if(str_ends_with($cook_instructions, ',')) {
+            $cook_instructions = substr_replace($cook_instructions ,"",-1);
+        }
+
+        // Checking and removing the last character if the input ends with a comma
+        $tools = $_REQUEST['tools'];
+        if(str_ends_with($tools, ',')) {
+            $tools = substr_replace($tools ,"",-1);
+        }
+
+   
+        $recipe->name = $_REQUEST['name'];
+        $recipe->info = $_REQUEST['info'];
+        $recipe->prep_time = $_REQUEST['prep_time'];
+        $recipe->cooking_time = $_REQUEST['cooking_time'];
+        $recipe->servings = $_REQUEST['servings'];
+        $recipe->user_id = Auth()->user()->id;
+        $recipe->category_id = $_REQUEST['category'];
+        $recipe->difficulty_id = $_REQUEST['difficulty'];
+        $recipe->ingredients = $ingredients;
+        $recipe->prep_instructions = $prep_instructions;
+        $recipe->cook_instructions = $cook_instructions;
+        $recipe->tools = $tools;
+        
+
+        // Checking if recipe image exist
+        if(request('file_path')){
+            $recipe->file_path = request('file_path')->store('images');
+        }
+
+        // dd($recipe);
+        $recipe->save();
+
+        Toastr::success('Recipe updated successfuly!', 'System message');
+
+        return redirect(route('recipe.index'));
     }
 }

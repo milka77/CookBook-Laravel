@@ -12,5 +12,8 @@ Route::middleware(['auth'])->group(function(){
   Route::get('/recipe/new', [RecipeController::class, 'create'])->name('recipe.create');
   Route::post('/recipe', [RecipeController::class, 'store'])->name('recipe.store');
 
+  Route::get('/recipe/{recipe}/edit', [RecipeController::class, 'edit'])->name('recipe.edit');
+  Route::patch('/recipe/{recipe}/update', [RecipeController::class, 'update'])->name('recipe.update');
+
   Route::get('/user/myrecipies', [RecipeController::class, 'userRecipies'])->name('user.myrecipies');
 });
