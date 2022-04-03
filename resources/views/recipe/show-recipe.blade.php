@@ -24,10 +24,10 @@
       </div>
     </div>
     <div class="col-md-6  col-sm-12 recipe-info__right">
-      @if ($recipe->file_path)
-        <img class="img-fluid rounded mx-auto d-block " src="{{$recipe->file_path}}" alt="">        
+      @if(str_contains($recipe->file_path, '.jpg') || str_contains($recipe->file_path, '.png'))
+        <img class="card-img-top recipe__image" src="{{$recipe->file_path}}" alt="">        
       @else
-        <img class="img-fluid rounded mx-auto d-block" src="https://i.picsum.photos/id/400/300/200.jpg?hmac=7dQ8yzes8nypL9lwIUoEZWNLHd9SgcpCbs8fZ07JT8U" alt="">
+        <img class="card-img-top recipe__image" src="{{ asset('storage/images/placeholder-image.jpg') }}" alt="">
       @endif
     </div>
   </div>
