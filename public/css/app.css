@@ -11300,12 +11300,14 @@ textarea.form-control-lg {
   margin: 0 !important;
 }
 
-.recipe-card {
-  min-height: 415px;
+.recipe__card {
+  min-height: 26rem;
 }
-
-.card-text {
-  min-height: 69px;
+.recipe__image {
+  min-height: 12.375rem;
+}
+.recipe__info {
+  min-height: 6.25rem;
 }
 
 @media (max-width: 39.9375em) {

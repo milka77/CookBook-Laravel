@@ -12,12 +12,19 @@
   margin: 0 !important;
 }
 
-.recipe-card {
-  min-height: 415px;
-}
+.recipe {
 
-.card-text {
-  min-height: 69px;
+  &__card {
+    min-height: 26rem;
+  }
+
+  &__image {
+    min-height: 12.375rem;
+  }
+
+  &__info {
+    min-height: 6.25rem;
+  }
 }
 
 @include breakpoint-down(small) {
