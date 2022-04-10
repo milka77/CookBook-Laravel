@@ -1,7 +1,7 @@
 <x-admin-master>
   @section('content')
   <div class="container">
-    <h2 class="text-center">List of {{auth()->user()->first_name}}'s recipies - Admin Panel</h2>
+    <h2 class="text-center">List of {{ auth()->user()->first_name }}'s recipies - Admin Panel</h2>
 
     <div>
       <table class="table">
@@ -16,11 +16,11 @@
         <tbody>
           @foreach ($myrecipies as $recipe)
             <tr class="border-bottom">
-              <td>{{$recipe->id}}</td>
-              <td>{{$recipe->name}}</td>
+              <td>{{ $recipe->id }}</td>
+              <td>{{ $recipe->name }}</td>
               <td><a class="btn btn-success" href="#">Update</a></td>
               <td>
-                <form action="#" method="POST">
+                <form action="{{ route('recipe.destroy', $recipe->id) }}" method="POST">
                   @csrf
                   @method('DELETE')
                   <input class="btn btn-outline-danger" type="submit" value="Delete">
@@ -35,8 +35,8 @@
       
       <div class="mb-3 d-flex">
         <div class="mx-auto">
-          <a href="{{route('recipe.create')}}" class="btn btn-success">Add recipe</a>
-          <a href="{{route('admin.index')}}" class="btn btn-outline-danger">Back</a>
+          <a href="{{ route('recipe.create') }}" class="btn btn-success">Add recipe</a>
+          <a href="{{ route('admin.index') }}" class="btn btn-outline-danger">Back</a>
         </div>
       </div>
     </div>       

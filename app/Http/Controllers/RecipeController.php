@@ -214,4 +214,13 @@ class RecipeController extends Controller
 
         return redirect(route('recipe.index'));
     }
+
+    // Deleting a recipe 
+    public function destroy(Recipe $recipe) {
+        $recipe->delete();
+
+        Toastr::success('Recipe was deleted successfuly!', 'System message');
+
+        return redirect(route('user.myrecipies'));
+    }
 }

@@ -15,5 +15,7 @@ Route::middleware(['auth'])->group(function(){
   Route::get('/recipe/{recipe}/edit', [RecipeController::class, 'edit'])->name('recipe.edit');
   Route::patch('/recipe/{recipe}/update', [RecipeController::class, 'update'])->name('recipe.update');
 
+  Route::delete('/recipe/{recipe}/delete', [RecipeController::class, 'destroy'])->name('recipe.destroy');
+
   Route::get('/user/myrecipies', [RecipeController::class, 'userRecipies'])->name('user.myrecipies');
 });
