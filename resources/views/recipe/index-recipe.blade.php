@@ -19,7 +19,7 @@
                     <h5 class="card-title">{{ $recipe->name }}</h5>
                     <p class="card-text recipe__info">{{ Str::limit($recipe->info, 100,'...') }}</p>
                     <div class="d-grid">
-                      <a href="{{route('recipe.show', $recipe->id)}}" class="btn btn-block btn-light border">Show Recipe</a>
+                      <a href="{{route('recipe.show', $recipe->id)}}" class="btn btn-block btn-outline-dark border">Show Recipe</a>
                     </div>
                     <div class="mt-2 mb-0 d-flex">
                       <ul class="recipe__social__list mx-auto">
@@ -35,8 +35,14 @@
               @endforeach
 
               {{-- Pagination links --}}
-              <div class="d-flex">
-                <div class="mx-auto">{{ $recipies->links() }}  </div>
+              <div class="row">
+                <div class="col-5">
+                  Showing ({{ $recipies->firstItem() }} to {{ $recipies->lastItem() }}) of {{ $recipies->total() }} entries
+                </div>
+
+                <div class="col-7 d-flex justify-content-start">
+                  {{ $recipies->links() }}
+                </div>
               </div>
               {{-- End of Pagination links --}}
             </div>
