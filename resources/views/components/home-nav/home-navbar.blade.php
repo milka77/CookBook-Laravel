@@ -1,4 +1,10 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+<div class="header__logo">
+  <div class="header__text">
+    <h1 class="pb-2">Welcome to</h1>
+    <h2>Krisztian's Online CookBook</h2>
+  </div>
+</div>
+<nav class="navbar sticky-top navbar-expand-md navbar-dark shadow-sm nav-bg-light" id="nav">
   <div class="container">
       <a class="navbar-brand" href="{{ url('/') }}">
           {{ config('app.name', 'Laravel') }}
@@ -9,17 +15,18 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- Left Side Of Navbar -->
-          <ul class="navbar-nav me-auto">
+          <ul class="navbar-nav me-auto" id="nav-link">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
+              <a class="nav-link {{ (request()->is('/')) ? 'active-link' : '' }}" aria-current="page" href="{{ route('home') }}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{{ route('recipe.index')}}">Recipies</a>
+              <a class="nav-link {{ (request()->is('recipe')) ? 'active-link' : '' }}" aria-current="page" href="{{ route('recipe.index') }}">Recipies</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{{ route('recipe.create')}}">New Recipe</a>
+              <a class="nav-link {{ (request()->is('recipe/new')) ? 'active-link' : '' }}" aria-current="page" href="{{ route('recipe.create') }}">New Recipe</a>
             </li>
           </ul>
+          
 
           <!-- Right Side Of Navbar -->
           <ul class="navbar-nav ms-auto">
@@ -43,7 +50,7 @@
                   </a>
 
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{route('admin.index')}}">Admin</a>  
+                    <a class="dropdown-item" href="{{ route('admin.index') }}">Admin</a>  
                     
                     <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
@@ -58,8 +65,11 @@
                  
                 </li>        
               @endguest
-              
-          </ul>
+            </ul>
+            <form class="d-flex justify-content-start">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button id="search-btn" class="btn btn-dark" type="submit">Search</button>
+            </form>
       </div>
   </div>
 </nav>

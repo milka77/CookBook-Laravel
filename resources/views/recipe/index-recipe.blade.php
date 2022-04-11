@@ -11,7 +11,7 @@
               <div class="col-sm-12 col-md-4 col-lg-3 mb-3">
                 <div class="card recipe__card" >
                   @if(str_contains($recipe->file_path, '.jpg') || str_contains($recipe->file_path, '.png'))
-                    <img class="card-img-top recipe__image" src="{{$recipe->file_path}}" alt="">        
+                    <img class="card-img-top recipe__image" src="{{ $recipe->file_path }}" alt="">        
                   @else
                     <img class="card-img-top recipe__image" src="{{ asset('storage/images/placeholder-image.jpg') }}" alt="">
                   @endif
@@ -43,13 +43,5 @@
           </div>
       </div>
   </div>
-  @endsection
-
-  @section('extra-script')
-  <script>
-    
-
-  </script>
-  @endsection
-  
+  @endsection  
   </x-home-master>
