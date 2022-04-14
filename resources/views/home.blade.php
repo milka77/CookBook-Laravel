@@ -51,7 +51,7 @@
           </div>
           @endforeach
 
-          <div class="text-center">
+          <div class="text-center mt-4">
             <span>Currently we have <strong>{{ $recipies->total() }} recipies</strong> in our collection.</span>
           </div>
           {{-- ALL RECIPIES LINK --}}
