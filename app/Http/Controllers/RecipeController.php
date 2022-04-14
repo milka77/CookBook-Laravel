@@ -127,11 +127,17 @@ class RecipeController extends Controller
         return view('recipe.show-recipe', ['recipe'=>$recipe]);
     } 
 
-    // Users Admin panel
-    public function userRecipies() {
+    // Users and Admin's Admin panel
+    public function allRecipies() {
         $myRecipies = auth()->user()->recipies()->paginate(10);
+        $recipies = Recipe::paginate(10);
 
-        return view('recipe.my-recipe', ['myrecipies'=>$myRecipies]);
+        $context = [
+            'myRecipies' => $myRecipies,
+            'recipies' => $recipies
+        ];
+
+        return view('admin.recipe.all-recipe', $context);
     }
 
     // Recipe edit function

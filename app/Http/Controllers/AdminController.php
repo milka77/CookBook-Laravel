@@ -22,10 +22,4 @@ class AdminController extends Controller
         return view('admin.index', $context);
     }
 
-    public function allRecipies() {
-    //     $recipies = auth()->user()->recipies()->get();
-        $recipies = Recipe::paginate(10);
-
-        return(view('admin.recipe.index-recipe', ['recipies' => $recipies]));
-    }
 }

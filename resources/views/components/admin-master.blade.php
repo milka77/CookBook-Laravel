@@ -36,7 +36,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-utensils"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">K.O.C. ADMIN</div>
+        <div class="sidebar-brand-text mx-3">K.O.CB. ADMIN</div>
       </a>
 
       <!-- Divider -->
@@ -54,11 +54,15 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        User Admin Panel
+        @if(auth()->user()->userHasRole('admin'))
+          Admin's Admin Panel
+        @else
+          User Admin Panel
+        @endif
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <x-admin-nav.admin-sidebar-user-admin-links></x-admin-nav.admin-sidebar-user-admin-links>
+      <x-admin-nav.admin-sidebar-recipe-links></x-admin-nav.admin-sidebar-recipe-links>
 
       <!-- Divider -->
       <hr class="sidebar-divider">

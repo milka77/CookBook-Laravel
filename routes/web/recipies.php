@@ -17,5 +17,5 @@ Route::middleware(['auth'])->group(function(){
 
   Route::delete('/recipe/{recipe}/delete', [RecipeController::class, 'destroy'])->name('recipe.destroy');
 
-  Route::get('/user/myrecipies', [RecipeController::class, 'userRecipies'])->name('user.myrecipies');
+  Route::get('/recipe/allrecipies', [RecipeController::class, 'allRecipies'])->name('recipe.allrecipies');
 });
