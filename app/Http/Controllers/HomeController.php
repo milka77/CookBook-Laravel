@@ -24,9 +24,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $recipies = Recipe::inRandomOrder()->limit(4)->get();
+        $recipies = Recipe::paginate();
+        $recipiesSample = Recipe::inRandomOrder()->limit(4)->get();
 
         $context = [
+            'recipiesSample' => $recipiesSample,
             'recipies' => $recipies,
         ];
         
