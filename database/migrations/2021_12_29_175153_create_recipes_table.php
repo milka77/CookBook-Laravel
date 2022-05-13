@@ -27,7 +27,7 @@ class CreateRecipesTable extends Migration
             $table->text('prep_instructions')->nullable();
             $table->text('cook_instructions');
             $table->text('tools')->nullable();
-            $table->string('file_path');
+            $table->string('file_path')->nullable();
             $table->timestamp('created_at');
             $table->timestamp('updated_at')->nullable();
         });
