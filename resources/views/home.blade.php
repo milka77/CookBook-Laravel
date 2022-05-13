@@ -24,7 +24,7 @@
               @if(str_contains($recipe->file_path, '.jpg') || str_contains($recipe->file_path, '.png'))
               <img class="card-img-top recipe__image" src="{{$recipe->file_path}}" alt="">
               @else
-              <img class="card-img-top recipe__image" src="{{ asset('storage/images/placeholder-image.jpg') }}" alt="">
+              <img class="card-img-top recipe__image" src="{{ asset('storage/images/site-images/placeholder-image.jpg') }}" alt="">
               @endif
               {{-- <img
                 src="https://i.picsum.photos/id/400/300/200.jpg?hmac=XggVZVWD6dX5cm-sPm1-MUjPZFsIPdj-2CeB8brj4jQ"
