@@ -1,3 +1,4 @@
-*
+!public/images/site-images/
 !public/
 !.gitignore
+*
