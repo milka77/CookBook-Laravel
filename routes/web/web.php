@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use Facade\FlareClient\Glows\Recorder;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,4 +38,8 @@ Route::middleware('auth')->prefix('admin')->group(function(){
 
     Route::delete('/role/{role}/destroy', [RoleController::class, 'destroy'])->name('role.destroy');
 
+});
+
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:link');
 });
