@@ -63,7 +63,7 @@
       </div>
       <hr>
 
-      {{-- @if(auth()->user()->userHasRole('Admin')) --}}
+      @if(auth()->user()->userHasRole('Admin'))
         <div class="row mt-3">
           <div class="col-sm-12">
             <div class="card shadow mb-4">
@@ -156,7 +156,7 @@
             </div>
           </div>
         </div>
-      {{-- @endif --}}
+      @endif
     </div>
   @endsection
 </x-admin-master>
