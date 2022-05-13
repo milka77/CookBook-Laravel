@@ -47,7 +47,13 @@
                 </tr>
                 <tr>
                   <td>Latest recipe</td>
-                  <td class="text-right"><a href="{{ route('recipe.show', $recipies->last()->id )}}">{{ $recipies->last()->name }}</a></td>
+                  <td class="text-right">
+                    @if(count($recipies) === 0) 
+                      No records found in the database
+                    @else
+                      <a href="{{ route('recipe.show', $recipies->last()->id )}}">{{ $recipies->last()->name }}</a>
+                    @endif
+                  </td>
                 </tr>
               </tbody>
             </table>
