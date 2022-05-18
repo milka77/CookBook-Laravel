@@ -44,6 +44,6 @@ class Recipe extends Model
             return $value;
         }
 
-        return asset('storage/' . $value);
+        return asset('uploads/' . $value);
     }
 }
