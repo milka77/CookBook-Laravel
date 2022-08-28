@@ -4,7 +4,7 @@
 
   <h2 class="text-center mt-2">{{$recipe->name}}</h2>
   <p class="text-center mb-5">{{$recipe->info}}</p>
-
+  {{ $recipe->file_path }}
   <!-- Recipe info and image -->
   <div class="row recipe-info ">
     <div class="col-md-6 col-sm-12 recipe-info__left bg-light">

@@ -52,7 +52,7 @@ class RecipeController extends Controller
     }
 
     // Store the new recipe in the DB
-    public function store()
+    public function store(Request $request)
     {
         // $this->authorize('create', Recipe::class);
 
@@ -109,10 +109,13 @@ class RecipeController extends Controller
             'tools' => $tools,
         ];
         
-        // Checking if recipe image exist
+        //Checking if recipe image exist
         if(request('file_path')){
-            $data['file_path'] = request('file_path')->store('images');
+            $data['file_path'] = request('file_path')->store('images', 's3');
         }
+
+
+
         // dd($data);
 
         auth()->user()->recipies()->create($data);

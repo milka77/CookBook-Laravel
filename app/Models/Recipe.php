@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Recipe extends Model
 {
@@ -40,10 +41,14 @@ class Recipe extends Model
     }
 
     public function getFilePathAttribute($value) {
-        if(strpos($value, 'https://') !== FALSE || strpos($value, 'http://') !== FALSE) {
-            return $value;
+        if(!empty($value)) {
+
+            if(strpos($value, 'https://') !== FALSE || strpos($value, 'http://') !== FALSE) {
+                return $value;
+            }
+    
+            return Storage::disk('s3')->url($value);
         }
 
-        return asset('uploads/' . $value);
     }
 }
