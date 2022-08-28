@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\News;
+use Brian2694\Toastr\Facades\Toastr;
 
 class NewsController extends Controller
 {
@@ -13,7 +15,17 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
+        $my_news = News::orderBy('created_at', 'DESC')->get();
+
+        return view('components/news/news-index', ['my_news' => $my_news]);
+    }
+
+
+    public function adminIndex()
+    {
+        $my_news = News::paginate(10);
+
+        return view('admin/news/index-news', ['my_news' => $my_news]);
     }
 
     /**
@@ -23,7 +35,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/news/new-news');
     }
 
     /**
@@ -34,7 +46,17 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validating data
+        $data = request()->validate([
+            'title' => 'required',
+            'body' => 'required',
+        ]);
+
+        auth()->user()->userNews()->create($data);
+
+        Toastr::success('News added successfuly!', 'System message');
+
+        return redirect()->route('news.index');
     }
 
     /**
@@ -43,9 +65,9 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(News $news)
     {
-        //
+        return view('admin/news/show-news', ['news' => $news]);
     }
 
     /**
@@ -54,9 +76,9 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(News $news)
     {
-        //
+        return view('admin/news/edit-news', ['news' => $news]);
     }
 
     /**
@@ -66,9 +88,19 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(News $news)
     {
-        //
+        // Validation of Data
+        $data = request()->validate([
+            'title' => 'required',
+            'body' => 'required',
+        ]);
+
+        $news->update($data);
+
+        Toastr::success('News updated successfuly!', 'System message');
+
+        return redirect()->route('news.index');
     }
 
     /**
@@ -77,8 +109,12 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(News $news)
     {
-        //
+        $news->delete();
+
+        Toastr::success('News deleted successfuly!', 'System message');
+
+        return redirect()->route('news.index');
     }
 }

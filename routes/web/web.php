@@ -23,6 +23,8 @@ Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+
 Route::middleware('auth')->prefix('admin')->group(function(){
    
     // Admin Routes
@@ -30,8 +32,6 @@ Route::middleware('auth')->prefix('admin')->group(function(){
     Route::get('/allrecipe', [AdminController::class, 'allRecipies'])->name('admin.allrecipies');
 
 
-    // News Routes
-    Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 
 
 });

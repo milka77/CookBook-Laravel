@@ -29,8 +29,8 @@
       <div class="bg-white py-2 collapse-inner rounded">
       
         <h6 class="collapse-header">News</h6>
-        <a class="collapse-item" href="{{ route('user.index') }}">Show All News</a>
-        <a class="collapse-item" href="{{ route('user.index') }}">Add News</a>
+        <a class="collapse-item" href="{{ route('news.admin') }}">Show All News</a>
+        <a class="collapse-item" href="{{ route('news.create') }}">Add News</a>
       
       </div>
     </div>

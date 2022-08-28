@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Str;
 use App\Models\Recipe;
+use App\Models\News;
 
 class User extends Authenticatable
 {
@@ -47,6 +48,10 @@ class User extends Authenticatable
 
     public function recipies() {
         return $this->hasMany(Recipe::class);
+    }
+
+    public function userNews() {
+        return $this->hasMany(News::class);
     }
 
     // Get users full name

@@ -21,24 +21,23 @@
         <h3 class="mb-3">Latest from {{ config('app.name', 'Laravel') }}</h3>
         <div class="row justify-content-start">
           @foreach ($my_news as $news)
-          <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+          <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
             <div class="card news__card">
               <div class="card-header">
 
-                <h5 class="card-title mb-0">{{ $news->title }}</h5>
+                <h5 class="card-title mb-0">{{ Str::ucfirst($news->title) }}</h5>
               </div>
               <div class="card-body">
                 <p class="card-text news__info">{{ Str::limit($news->body, 100,'...') }}</p>
-                <div class="d-flex flex-row-reverse">
-                  <a href="#" class="btn btn-outline-dark border px-4"><span class="text-right">Find out more <i class="fas fa-chevron-right"><i class="fas fa-chevron-right"></span></i></i></a>
+                <div class="d-flex flex-row justify-content-between">
+                  <small class="d-flex align-items-end">Created at: {{ $news->created_at }}</small>
+                  <a href="{{ route('news.index') }}" class="btn btn-outline-dark border px-4"><span class="text-right">Find out more <i class="fas fa-chevron-right"><i class="fas fa-chevron-right"></span></i></i></a>
                 </div>
                 
               </div>
             </div>
           </div>
           @endforeach
-
-         
 
         </div>
       </div>
@@ -51,7 +50,7 @@
         <h3 class="mb-3">Sample Recipies</h3>
         <div class="row justify-content-center">
           @foreach ($recipiesSample as $recipe)
-          <div class="col-sm-12 col-md-4 col-lg-3 mb-3">
+          <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
             <div class="card recipe__card">
               @if(str_contains($recipe->file_path, '.jpg') || str_contains($recipe->file_path, '.png'))
               <img class="card-img-top recipe__image" src="{{$recipe->file_path}}" alt="">

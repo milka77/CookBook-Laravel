@@ -27,7 +27,7 @@ class HomeController extends Controller
     {
         $recipies = Recipe::paginate();
         $recipiesSample = Recipe::inRandomOrder()->limit(4)->get();
-        $my_news = News::limit(4)->get();
+        $my_news = News::limit(4)->orderBy('created_at', 'DESC')->get();
 
         $context = [
             'recipiesSample' => $recipiesSample,
