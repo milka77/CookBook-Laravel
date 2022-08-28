@@ -41,7 +41,11 @@ class RecipeController extends Controller
     public function search() {
         $q = request()->query('q');
 
-        $recipies = Recipe::latest()->where('name', 'LIKE', "%{$q}%")->orWhere('info', 'LIKE', "%{$q}%")->orWhere('ingredients', 'LIKE', "%{$q}%")->paginate(8);
+        // MySQL
+        //$recipies = Recipe::latest()->where('name', 'LIKE', "%{$q}%")->orWhere('info', 'LIKE', "%{$q}%")->orWhere('ingredients', 'LIKE', "%{$q}%")->paginate(8);
+        
+        // Changed LIKE to ILIKE to case insensitive on Prostgres DB @ Heroku
+        $recipies = Recipe::latest()->where('name', 'ILIKE', "%{$q}%")->orWhere('info', 'ILIKE', "%{$q}%")->orWhere('ingredients', 'ILIKE', "%{$q}%")->paginate(8);
 
         return view('recipe.index-recipe', ['recipies'=>$recipies]);
     }

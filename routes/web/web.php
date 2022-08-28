@@ -30,6 +30,10 @@ Route::middleware('auth')->prefix('admin')->group(function(){
     Route::get('/allrecipe', [AdminController::class, 'allRecipies'])->name('admin.allrecipies');
 
 
+    // News Routes
+    Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+
+
 });
 
 Route::get('/linkstorage', function () {
