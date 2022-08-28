@@ -2,8 +2,8 @@
 @section('content')
 <div class="container recipe__frame frame">
 
-  <h2 class="text-center mt-2">{{$recipe->name}}</h2>
-  <p class="text-center mb-5">{{$recipe->info}}</p>
+  <h2 class="text-center mt-2">{{ $recipe->name }}</h2>
+  <p class="text-center mb-5">{{ $recipe->info }}</p>
 
   <!-- Recipe info and image -->
   <div class="row recipe-info ">
@@ -13,11 +13,11 @@
       <div class="row">
         <div class="col-12">
           <ul class="">
-            <li>Preparation time: <span class="recipe-info__left__list-data">{{$recipe->prep_time}} mins</span></li>
-            <li>Cooking time: <span class="recipe-info__left__list-data">{{$recipe->cooking_time}} mins</span></li>
-            <li>Servings: <span class="recipe-info__left__list-data">{{$recipe->servings}} plates</span></li>
-            <li>Category: <span class="recipe-info__left__list-data">{{$recipe->category->name}}</span></li>
-            <li>Difficulty: <span class="recipe-info__left__list-data">{{$recipe->difficulty->name}}</span></li>
+            <li>Preparation time: <span class="recipe-info__left__list-data">{{ $recipe->prep_time }} mins</span></li>
+            <li>Cooking time: <span class="recipe-info__left__list-data">{{ $recipe->cooking_time }} mins</span></li>
+            <li>Servings: <span class="recipe-info__left__list-data">{{ $recipe->servings }} plates</span></li>
+            <li>Category: <span class="recipe-info__left__list-data">{{ $recipe->category->name }}</span></li>
+            <li>Difficulty: <span class="recipe-info__left__list-data">{{ $recipe->difficulty->name }}</span></li>
           </ul>
         </div>
         
@@ -25,7 +25,7 @@
     </div>
     <div class="col-md-6  col-sm-12 recipe-info__right">
       @if(str_contains($recipe->file_path, '.jpg') || str_contains($recipe->file_path, '.png'))
-        <img class="card-img-top recipe__image" src="{{$recipe->file_path}}" alt="">        
+        <img class="card-img-top recipe__image" src="{{ $recipe->file_path }}" alt="">        
       @else
         <img class="card-img-top recipe__image" src="{{ asset('images/site-images/placeholder-image.jpg') }}" alt="">
       @endif
@@ -40,7 +40,7 @@
         <ul>
           @foreach(explode(',', $recipe->ingredients) as $ingredient)
           <li>
-            {{$ingredient}}
+            {{ $ingredient }}
           </li>
         @endforeach
         </ul>
@@ -50,7 +50,7 @@
       <h4 class="recipe__heading">Tools</h4>
       <ul>
         @foreach(explode(',', $recipe->tools) as $tool)
-        <li> {{!empty($tool) ? $tool : 'No special tools required!'}}</li>
+        <li> {{ !empty($tool) ? $tool : 'No special tools required!' }}</li>
       @endforeach
       </ul>
     </div>
@@ -61,7 +61,7 @@
       <h4 class="recipe__heading">Cooking Istructions</h4>
       <ol>
         @foreach(explode(',', $recipe->cook_instructions) as $cook_inst)
-        <li> {{$cook_inst}}</li>
+        <li> {{ $cook_inst }}</li>
       @endforeach
       </ol>
     </div>
@@ -71,7 +71,7 @@
       <ol>
         @foreach(explode(',', $recipe->prep_instructions) as $preparation)
         <li>
-          {{$preparation}}
+          {{ $preparation }}
         </li>
       @endforeach
       </ol>
@@ -81,7 +81,7 @@
   <div class="row recipe__footer">
     
     <div class="col-md-4 col-sm-12">
-      <small>Created by: {{$recipe->user->first_name}} {{$recipe->user->last_name}}</small>
+      <small>Created by: {{ $recipe->user->first_name }} {{ $recipe->user->last_name }}</small>
     </div>
 
     <div class="col-md-4 col-sm-12">
@@ -93,7 +93,7 @@
       </ul>      
     </div>
     <div class="col-md-4 col-sm-12 recipe__footer__updated">
-      <small>Last Updated: {{$recipe->updated_at}}</small>
+      <small>Last Updated: {{ $recipe->updated_at }}</small>
     </div>
     
   </div>

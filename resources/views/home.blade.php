@@ -16,7 +16,39 @@
 
       </div>
 
+      {{-- News --}}
       <div class="mt-4">
+        <h3 class="mb-3">Latest from {{ config('app.name', 'Laravel') }}</h3>
+        <div class="row justify-content-start">
+          @foreach ($my_news as $news)
+          <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <div class="card news__card">
+              <div class="card-header">
+
+                <h5 class="card-title mb-0">{{ $news->title }}</h5>
+              </div>
+              <div class="card-body">
+                <p class="card-text news__info">{{ Str::limit($news->body, 100,'...') }}</p>
+                <div class="d-flex flex-row-reverse">
+                  <a href="#" class="btn btn-outline-dark border px-4"><span class="text-right">Find out more <i class="fas fa-chevron-right"><i class="fas fa-chevron-right"></span></i></i></a>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          @endforeach
+
+         
+
+        </div>
+      </div>
+      {{-- End Of News --}}
+
+      <hr class="mt-4">
+
+      {{-- Random recipe samples --}}
+      <div class="mt-4">
+        <h3 class="mb-3">Sample Recipies</h3>
         <div class="row justify-content-center">
           @foreach ($recipiesSample as $recipe)
           <div class="col-sm-12 col-md-4 col-lg-3 mb-3">
@@ -24,7 +56,7 @@
               @if(str_contains($recipe->file_path, '.jpg') || str_contains($recipe->file_path, '.png'))
               <img class="card-img-top recipe__image" src="{{$recipe->file_path}}" alt="">
               @else
-              <img class="card-img-top recipe__image" src="{{ asset('storage/images/site-images/placeholder-image.jpg') }}" alt="">
+              <img class="card-img-top recipe__image" src="{{ asset('images/site-images/placeholder-image.jpg') }}" alt="">
               @endif
               {{-- <img
                 src="https://i.picsum.photos/id/400/300/200.jpg?hmac=XggVZVWD6dX5cm-sPm1-MUjPZFsIPdj-2CeB8brj4jQ"
@@ -62,7 +94,10 @@
 
         </div>
       </div>
+      {{-- End of Random recipe samples --}}
     </div>
+
+    <hr class="mt-4">
   </div>
   @endsection
 

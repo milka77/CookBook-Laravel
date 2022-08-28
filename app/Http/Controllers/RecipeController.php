@@ -222,7 +222,7 @@ class RecipeController extends Controller
 
         // Checking if recipe image exist
         if(request('file_path')){
-            $recipe->file_path = request('file_path')->store('images');
+            $recipe->file_path = request('file_path')->store('images', 's3');
         }
 
         // dd($recipe);

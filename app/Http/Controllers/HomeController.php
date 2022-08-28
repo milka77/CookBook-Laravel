@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Recipe;
+use App\Models\News;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,10 +27,12 @@ class HomeController extends Controller
     {
         $recipies = Recipe::paginate();
         $recipiesSample = Recipe::inRandomOrder()->limit(4)->get();
+        $my_news = News::limit(4)->get();
 
         $context = [
             'recipiesSample' => $recipiesSample,
             'recipies' => $recipies,
+            'my_news' => $my_news,
         ];
         
         return view('home', $context);
