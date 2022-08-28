@@ -11,24 +11,29 @@
             <th>Email</td>
             <th>Role</th>
             <th>Registered</td>
-            <th>Update</td>
-            <th>Delete</td>
+            <th>Functions</td>
           </tr>
         </thead>
         <tbody>
           @foreach($users as $user)
           
           <tr>
-            <td>{{$user->id}}</td>
-            <td>{{$user->full_name}}</td>
-            <td>{{$user->email}}</td>
+            <td>{{ $user->id }}</td>
+            <td>{{ $user->full_name }}</td>
+            <td>{{ $user->email }}</td>
             <td>
               @foreach ($user->roles as $role )
-                  {{$role->name}}
+                  {{ $role->name }}
               @endforeach </td>
-            <td>{{$user->created_at}}</td>
-            <td>UPDATE</td>
-            <td>DEL</td>
+            <td>{{ $user->created_at }}</td>
+            <td class="d-flex flex-row">
+              <a class="btn btn-primary text-white mr-2" href="{{ route('user.show', $user->id) }}">Show</a>
+              <form action="{{ route('user.destroy', $user->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <input class="btn btn-outline-danger" type="submit" value="Delete">
+              </form>
+            </td>
           </tr>
           @endforeach
         </tbody>
@@ -39,20 +44,19 @@
             <th>Email</td>
             <th>Role</th>
             <th>Registered</td>
-            <th>Update</td>
-            <th>Delete</td>
+            <th>Functions</td>
           </tr>
         </tfoot>
       </table>
 
       <div class="row">
         <div class="col-4">
-          Showing ({{$users->firstItem()}} to {{$users->lastItem()}}) of {{$users->total()}} entries
+          Showing ({{ $users->firstItem() }} to {{ $users->lastItem() }}) of {{ $users->total() }} entries
 
         </div>
         <div class="col-8 pagination">
          
-            {{$users->links()}}
+            {{ $users->links() }}
          
         </div>
       </div>

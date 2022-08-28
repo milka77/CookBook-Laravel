@@ -3,6 +3,7 @@
     <div class="container">
       <h1 class="text-center">User Profile</h1>
      
+      @if(auth()->user()->id === $user->id || auth()->user()->userHasRole('admin'))
       <div class="row">
         <div class="col-sm-12 col-md-5">
           <h4 class="text-center">Profile of {{$user->full_name}}</h4>
@@ -49,18 +50,44 @@
         <div class="col-sm-12 col-md-5">
           <h4 class="text-center">Update User Profile</h4>
 
-          <form action="" method="POST">
+          <form action="{{ route('user.update', $user->id) }}" method="POST">
+            @csrf
+            @method('PATCH')
+
             <div class="mb-3">
               <label class="form-label" for="first_name">First Name</label>
-            <input class="form-control form-control-sm" type="text" name="first_name" value={{$user->first_name}}>
+              <input class="form-control form-control-sm" type="text" name="first_name" value={{ $user->first_name }}>
             </div>
+
+            <div class="mb-3">
+              <label class="form-label" for="last_name">Last Name</label>
+              <input class="form-control form-control-sm" type="text" name="last_name" value={{ $user->last_name }}>
+            </div>
+
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">Email address</label>
-              <input type="email" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com">
+              <input type="email" class="form-control form-control-sm" name="email" value={{ $user->email }}>
             </div>
+
+            <div class="d-flex flex-row-reverse">
+              <button class="btn btn-success" type="submit">Update</button>
+              @if(auth()->user()->userHasRole('admin'))
+                <a class="btn btn-danger text-white mr-2" href="{{ route('user.index') }}">Back</a>
+              @else
+                <a class="btn btn-danger text-white mr-2" href="{{ route('admin.index') }}">Back</a>
+              @endif
+            </div>
+
           </form>
         </div>
       </div>
+      @else
+      <div class="row">
+        <div class="alert alert-danger text-center">
+          You are not authorised to visit this page!!
+        </div>
+      </div>
+      @endif
       <hr>
 
       @if(auth()->user()->userHasRole('Admin'))
