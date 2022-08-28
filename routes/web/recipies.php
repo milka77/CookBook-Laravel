@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/recipe', [RecipeController::class, 'index'])->name('recipe.index');
+Route::get('/recipe/search', [RecipeController::class, 'search'])->name('recipe.search');
 Route::get('/recipe/{recipe}/show', [RecipeController::class, 'show'])->name('recipe.show');
 
 Route::middleware(['auth'])->group(function(){

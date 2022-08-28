@@ -66,8 +66,8 @@
                 </li>        
               @endguest
             </ul>
-            <form class="d-flex justify-content-start">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form action="{{ route('recipe.search') }}" class="d-flex justify-content-start">
+              <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
               <button id="search-btn" class="btn btn-dark" type="submit">Search</button>
             </form>
       </div>

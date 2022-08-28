@@ -36,6 +36,15 @@ class RecipeController extends Controller
 
         return view('recipe.index-recipe', ['recipies'=>$recipies]);
     }
+    
+    // Search in recipies
+    public function search() {
+        $q = request()->query('q');
+
+        $recipies = Recipe::latest()->where('name', 'LIKE', "%{$q}%")->orWhere('info', 'LIKE', "%{$q}%")->orWhere('ingredients', 'LIKE', "%{$q}%")->paginate(8);
+
+        return view('recipe.index-recipe', ['recipies'=>$recipies]);
+    }
 
     // Show the new recipe form
     public function create()
