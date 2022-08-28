@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 
 // User Routes
-Route::middleware(['auth'])->prefix('user')->group(function(){
+Route::middleware(['auth', 'role:admin'])->prefix('user')->group(function(){
   Route::get('/', [UserController::class, 'index'])->name('user.index');
   Route::get('/{user}/show', [UserController::class, 'show'])->name('user.show');
 

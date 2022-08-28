@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['auth'])->prefix('difficulty')->group(function(){
+Route::middleware(['auth', 'role:admin'])->prefix('difficulty')->group(function(){
   
     // Difficulties routes
     Route::get('/', [DifficultyController::class, 'index'])->name('difficulty.index');

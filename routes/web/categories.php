@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['auth'])->prefix('category')->group(function(){
+Route::middleware(['auth', 'role:admin'])->prefix('category')->group(function(){
   
   // Categories Routes
   Route::get('/', [CategoryController::class, 'index'])->name('cat.index');
