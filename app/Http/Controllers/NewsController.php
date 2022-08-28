@@ -56,7 +56,7 @@ class NewsController extends Controller
 
         Toastr::success('News added successfuly!', 'System message');
 
-        return redirect()->route('news.index');
+        return redirect()->route('news.admin');
     }
 
     /**
